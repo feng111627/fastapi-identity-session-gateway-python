@@ -22,8 +22,8 @@ _STATUS_BY_CODE = {
 }
 
 
-def create_app() -> FastAPI:
-    settings = load_settings()
+def create_app(settings=None) -> FastAPI:
+    settings = settings or load_settings()
     store = Store()
     seed_demo_users(store)
     service = AuthService(store, settings)
